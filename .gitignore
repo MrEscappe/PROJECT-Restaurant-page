@@ -1,0 +1,2 @@
+# ignore the node_modules
+echo "node_modules" >> .gitignore
