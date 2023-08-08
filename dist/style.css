@@ -146,7 +146,15 @@ header {
 	box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.2);
 }
 
-.home-content {
+.div-content {
+	display: flex;
+	flex-direction: column;
+	color: var(--clr-background);
+	padding: 10px;
+	text-align: center;
+}
+
+.main-layout {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 	background-color: var(--clr-primary);

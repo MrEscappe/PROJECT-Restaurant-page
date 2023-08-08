@@ -1,5 +1,25 @@
 const content = document.getElementById("content");
 
+document.addEventListener("DOMContentLoaded", () => {
+	const navBtns = document.querySelectorAll(".nav-item");
+	navBtns.forEach((btn) => {
+		btn.addEventListener("click", (e) => {
+			const activeBtn = document.querySelector(".active");
+			activeBtn.classList.remove("active");
+			e.target.classList.add("active");
+			const main = document.querySelector("main");
+			main.remove();
+			if (e.target.textContent === "Home") {
+				content.appendChild(createHome());
+			} else if (e.target.textContent === "Menu") {
+				content.appendChild(createMenu());
+			} else if (e.target.textContent === "About") {
+				content.appendChild(createAbout());
+			}
+		});
+	});
+});
+
 function createHeader() {
 	const header = document.createElement("header");
 	const heading = document.createElement("h1");
@@ -30,11 +50,15 @@ function createNav() {
 	return nav;
 }
 
-function createMain() {
+// Content of the page
+
+// Home page
+function createHome() {
 	const main = document.createElement("main");
 	const homeContent = document.createElement("div");
 	main.classList.add("container");
 	homeContent.classList.add("home-content");
+	homeContent.classList.add("main-layout");
 	main.appendChild(homeContent);
 	for (let i = 0; i < 3; i++) {
 		const div = document.createElement("div");
@@ -58,8 +82,30 @@ function createMain() {
 	homeContent.appendChild(container_main);
 	return main;
 }
+
+// Menu page
+
+function createMenu() {
+	const main = document.createElement("main");
+	const menuContent = document.createElement("div");
+	menuContent.classList.add("menu-content");
+	menuContent.classList.add("main-layout");
+	const menuItems = ["Pizza", "Pasta", "Burger", "Sandwich", "Salad", "Dessert"];
+
+	menuItems.forEach((item) => {
+		const menuItem = document.createElement("div");
+		menuItem.classList.add("menu-item");
+		const menuItemTitle = document.createElement("p");
+		menuItemTitle.textContent = item;
+		menuItem.appendChild(menuItemTitle);
+		menuContent.appendChild(menuItem);
+	});
+	main.appendChild(menuContent);
+	return main;
+}
+
 content.appendChild(createHeader());
 
 content.appendChild(createNav());
 
-content.appendChild(createMain());
+content.appendChild(createHome());
