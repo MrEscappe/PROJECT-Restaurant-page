@@ -1,1 +1,1 @@
-console.log("Webpack is working!");
+const content = document.querySelector(".content");
